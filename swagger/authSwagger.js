@@ -9,19 +9,10 @@ const schema = {
             password: {
                 type: 'string',
             }
-        },
-        required: ['email', 'password'],
-    },
-    Token: {
-        title: 'Token',
-        properties: {
-            token: {
-                type: 'string'
-            }
         }
     },
     Register: {
-        title: 'Register',
+        title: 'User Register',
         properties: {
             firstName: {
                 type: 'string'
@@ -43,6 +34,12 @@ const paths = {
     '/auth/login': {
         post: {
             tags: [tag],
+            summary: "Login User",
+            description: "This can only be done by registered users.",
+            produces: [
+                "application/xml",
+                "application/json"
+            ],
             requestBody: {
                 content: {
                     'application/json': {
@@ -52,23 +49,18 @@ const paths = {
                     }
                 }
             },
-            responses: {
-                200: {
-                    description: 'User Login',
-                    content: {
-                        'application/json': {
-                            schema: {
-                                $ref: "#/components/schemas/Token"
-                            }
-                        }
-                    }
-                }
-            }
+            responses: {}
         }
     },
     '/auth/register': {
         post: {
             tags: [tag],
+            summary: "Register User",
+            description: "Used for users who will register an account",
+            produces: [
+                "application/xml",
+                "application/json"
+            ],
             requestBody: {
                 content: {
                     'application/json': {
@@ -78,8 +70,7 @@ const paths = {
                     }
                 }
             },
-            responses: {
-            } 
+            responses: {} 
         }
     }
 }

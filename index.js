@@ -20,12 +20,12 @@ app.use(express.urlencoded({
 
 app.use('/api', router);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swagger.default()));
-app.get('*', (req, res, next) => {
-    res.status(200).json({
-        message: "Welcome to the beginning of nothingness.",
-        status: 200
-    })
-})
+// app.get('*', (req, res, next) => {
+//     res.status(200).json({
+//         message: "Welcome to the beginning of nothingness.",
+//         status: 200
+//     })
+// })
 
 const port = process.env.PORT || '3000';
 app.set('port', port);
