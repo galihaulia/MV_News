@@ -47,15 +47,17 @@ const paths = {
                 "application/xml",
                 "application/json"
             ],
+            parameters: [
+                {
+                    name: "newsId",
+                    in: "path",
+                    description: "ID of news to return",
+                    required: true,
+                    type: "string"
+                }
+            ],
             responses: {}
         },
-        parameters: [{
-            name: "newsId",
-            in: "path",
-            description: "ID of news to return",
-            required: true,
-            type: "string"
-        }]
     },
     '/user/create/news': {
         post: {
@@ -99,27 +101,26 @@ const paths = {
                 "application/xml",
                 "application/json"
             ],
+            parameters: [
+                {
+                    name: "newsId",
+                    in: "path",
+                    description: "ID of news to return",
+                    required: true,
+                    type: "string"
+                }
+            ],
+            requestBody: {
+                content: {
+                    'application/json': {
+                        schema: {
+                            $ref: "#/components/schemas/News"
+                        }
+                    }
+                }
+            },
             responses: {}
         },
-        parameters: [
-            {
-                name: "newsId",
-                in: "path",
-                description: "ID of news to return",
-                required: true,
-                type: "string"
-            },
-            {
-                in: "body",
-                name: "body",
-                description: "Updated user object",
-                required: true,
-                schema: {
-                  $ref: "#/components/schemas/News"
-                }
-              }
-        ],
-        responses: {}
     },
     '/user/delete/news/{newsId}': {
         delete:{
@@ -130,18 +131,17 @@ const paths = {
                 "application/xml",
                 "application/json"
             ],
+            parameters: [
+                {
+                    name: "newsId",
+                    in: "path",
+                    description: "ID of news to return",
+                    required: true,
+                    type: "string"
+                },
+            ],
             responses: {}
         },
-        parameters: [
-            {
-                name: "newsId",
-                in: "path",
-                description: "ID of news to return",
-                required: true,
-                type: "string"
-            },
-        ],
-        responses: {}
     },
 }
 

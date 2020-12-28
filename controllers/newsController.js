@@ -78,7 +78,7 @@ const updateNews = (req, res, next) => {
             }
         })
         .then(data => {
-            return res.status(200).send(data);
+            return res.status(200).send("Updated Successfully");
         })
     })
 }
@@ -99,7 +99,7 @@ const deleteNews = (req, res, next) => {
             }
         })
         .then(data => {
-            return res.status(200).send("Success Delete");
+            return res.status(200).send("Successfully Deleted");
         })
     })
 }
