@@ -1,6 +1,9 @@
 # MV_News
 Boilerplate express.js with JWT auth and swagger
 
+## Architecture
+PostgreSQL, Node JS, ORM Sequelize, JWT Auth, with swagger documentation
+
 ## API Docs
 http://localhost:3000/api-docs/
 

@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const { registerValidation, loginValidation } = require('../helper.js/validation');
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = process.env;
+const { resSuccess }= require('../helper.js/respons');
 
 
 const register = (req, res, next) => {
@@ -31,7 +32,11 @@ const register = (req, res, next) => {
             .create(dataUser)
             .then(data => {
                 const token = jwt.sign({id:data.id}, JWT_SECRET);
-                return res.status(200).header('auth-token', token).send(data);
+                const message = 'Login Success!'
+                return res.status(200).header('auth-token', token).send(resSuccess({
+                    token:token,
+                    message: "Regis Success"
+                }));
             })
         }
     })
@@ -63,7 +68,10 @@ const login = (req, res, next) => {
             }
             else{
                 const token = jwt.sign({id:data.id}, JWT_SECRET);
-                res.header('auth-token', token).send(token);
+                res.header('auth-token', token).send(resSuccess({
+                    data: token,
+                    message: "Login Success"
+                }));
             }
         })
     }
